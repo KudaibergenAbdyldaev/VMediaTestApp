@@ -1,8 +1,9 @@
-package com.example.vmediatestapp
+package com.example.vmediatestapp.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.vmediatestapp.ui.main.MainFragment
+import com.example.vmediatestapp.R
+import com.example.vmediatestapp.presentation.main_fragment.MainFragment
 
 class MainActivity : AppCompatActivity() {
 
