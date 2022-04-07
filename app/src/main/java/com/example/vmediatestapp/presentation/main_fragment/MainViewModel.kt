@@ -1,4 +1,4 @@
-package com.example.vmediatestapp.ui.main
+package com.example.vmediatestapp.presentation.main_fragment
 
 import androidx.lifecycle.ViewModel
 
