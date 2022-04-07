@@ -1,5 +1,5 @@
 package com.example.vmediatestapp.domain.programm
 
 interface ProgramRepository {
-    fun getProgramItems(): List<ProgramItem>
+    suspend fun getProgramItems(): List<ProgramItem>
 }
