@@ -7,7 +7,13 @@ import com.example.vmediatestapp.domain.programm.RecentAirTime
 
 class ProgramMapper {
 
-    fun mapProgramDtoToProgram(dto: ProgramItemDto): ProgramItem {
+    fun mapProgramDtoListToProgramList(dto: List<ProgramItemDto>): List<ProgramItem> {
+        val list = mutableListOf<ProgramItem>()
+        dto.forEach { list.add(mapProgramDtoToProgram(it)) }
+        return list
+    }
+
+    private fun mapProgramDtoToProgram(dto: ProgramItemDto): ProgramItem {
         return ProgramItem(
             dto.startTime,
             mapRecentAirTimeDtoToRecentAirTime(dto.recentAirTime),
