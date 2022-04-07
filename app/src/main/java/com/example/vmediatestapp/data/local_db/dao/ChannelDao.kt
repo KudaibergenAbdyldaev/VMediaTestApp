@@ -13,5 +13,5 @@ interface ChannelDao {
     suspend fun insertChannels(channel: List<ChannelEntity>)
 
     @Query("SELECT * FROM channel")
-    fun getChannelMovie(): List<ChannelEntity>
+    fun getChannels(): List<ChannelEntity>
 }
