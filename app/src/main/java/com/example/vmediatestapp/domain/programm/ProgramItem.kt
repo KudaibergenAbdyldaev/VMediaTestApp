@@ -1,4 +1,4 @@
-package com.example.vmediatestapp.domain
+package com.example.vmediatestapp.domain.programm
 
 data class ProgramItem(
     val startTime: String,
