@@ -1,5 +1,7 @@
 package com.example.vmediatestapp.data.mapper
 
+import com.example.vmediatestapp.data.local_db.model.ProgramItemEntity
+import com.example.vmediatestapp.data.local_db.model.RecentAirTimeEntity
 import com.example.vmediatestapp.data.network.model.ProgramItemDto
 import com.example.vmediatestapp.data.network.model.RecentAirTimeDto
 import com.example.vmediatestapp.domain.programm.ProgramItem
@@ -25,6 +27,26 @@ class ProgramMapper {
 
     private fun mapRecentAirTimeDtoToRecentAirTime(dto: RecentAirTimeDto): RecentAirTime {
         return RecentAirTime(dto.id, dto.channelID)
+    }
+
+    fun mapProgramEntityListToProgramList(entity: List<ProgramItemEntity>): List<ProgramItem> {
+        val list = mutableListOf<ProgramItem>()
+        entity.forEach { list.add(mapProgramEntityToProgram(it)) }
+        return list
+    }
+
+    private fun mapProgramEntityToProgram(entity: ProgramItemEntity): ProgramItem {
+        return ProgramItem(
+            entity.startTime,
+            mapRecentAirTimeEntityToRecentAirTime(entity.recentAirTime),
+            entity.length,
+            entity.shortName,
+            entity.name
+        )
+    }
+
+    private fun mapRecentAirTimeEntityToRecentAirTime(entity: RecentAirTimeEntity): RecentAirTime {
+        return RecentAirTime(entity.id, entity.channelID)
     }
 
 }
