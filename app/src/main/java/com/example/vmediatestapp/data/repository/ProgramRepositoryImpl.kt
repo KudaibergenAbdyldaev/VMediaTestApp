@@ -1,6 +1,7 @@
 package com.example.vmediatestapp.data.repository
 
 import com.example.vmediatestapp.data.local_db.dao.ProgramItemsDao
+import com.example.vmediatestapp.data.local_db.model.ProgramItemEntity
 import com.example.vmediatestapp.data.mapper.ProgramMapper
 import com.example.vmediatestapp.data.network.ApiInterface
 import com.example.vmediatestapp.domain.programm.ProgramItem
@@ -19,6 +20,10 @@ class ProgramRepositoryImpl @Inject constructor(
 
     override suspend fun getLocalProgramItems(): List<ProgramItem> {
         return mapper.mapProgramEntityListToProgramList(programItemsDao.getProgramItems())
+    }
+
+    override suspend fun insertProgramItems(programItems: List<ProgramItemEntity>) {
+        return programItemsDao.insertProgramItems(programItems)
     }
 
 }
