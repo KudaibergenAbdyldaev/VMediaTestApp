@@ -52,6 +52,27 @@ class ProgramMapper @Inject constructor(){
         return RecentAirTime(entity.id, entity.channelID)
     }
 
+    //Domain model to Entity
+    fun mapProgramListToProgramEntityList(entity: List<ProgramItem>): List<ProgramItemEntity> {
+        val list = mutableListOf<ProgramItemEntity>()
+        entity.forEach { list.add(mapProgramToProgramEntity(it)) }
+        return list
+    }
+
+    private fun mapProgramToProgramEntity(entity: ProgramItem): ProgramItemEntity {
+        return ProgramItemEntity(
+            entity.startTime,
+            mapRecentAirTimeToRecentAirTimeEntity(entity.recentAirTime),
+            entity.length,
+            entity.shortName,
+            entity.name
+        )
+    }
+
+    private fun mapRecentAirTimeToRecentAirTimeEntity(entity: RecentAirTime): RecentAirTimeEntity {
+        return RecentAirTimeEntity(entity.id, entity.channelID)
+    }
+
     //Dto to Entity
     fun mapProgramDtoListToProgramEntityList(dto: List<ProgramItemDto>): List<ProgramItemEntity> {
         val list = mutableListOf<ProgramItemEntity>()
