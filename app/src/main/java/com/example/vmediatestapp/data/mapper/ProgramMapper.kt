@@ -6,9 +6,11 @@ import com.example.vmediatestapp.data.network.model.ProgramItemDto
 import com.example.vmediatestapp.data.network.model.RecentAirTimeDto
 import com.example.vmediatestapp.domain.programm.ProgramItem
 import com.example.vmediatestapp.domain.programm.RecentAirTime
+import javax.inject.Inject
 
-class ProgramMapper {
+class ProgramMapper @Inject constructor(){
 
+    //Dto to Domain model
     fun mapProgramDtoListToProgramList(dto: List<ProgramItemDto>): List<ProgramItem> {
         val list = mutableListOf<ProgramItem>()
         dto.forEach { list.add(mapProgramDtoToProgram(it)) }
@@ -29,6 +31,7 @@ class ProgramMapper {
         return RecentAirTime(dto.id, dto.channelID)
     }
 
+    //Entity to Domain model
     fun mapProgramEntityListToProgramList(entity: List<ProgramItemEntity>): List<ProgramItem> {
         val list = mutableListOf<ProgramItem>()
         entity.forEach { list.add(mapProgramEntityToProgram(it)) }
@@ -47,6 +50,27 @@ class ProgramMapper {
 
     private fun mapRecentAirTimeEntityToRecentAirTime(entity: RecentAirTimeEntity): RecentAirTime {
         return RecentAirTime(entity.id, entity.channelID)
+    }
+
+    //Dto to Entity
+    fun mapProgramDtoListToProgramEntityList(dto: List<ProgramItemDto>): List<ProgramItemEntity> {
+        val list = mutableListOf<ProgramItemEntity>()
+        dto.forEach { list.add(mapProgramDtoToProgramEntity(it)) }
+        return list
+    }
+
+    private fun mapProgramDtoToProgramEntity(dto: ProgramItemDto): ProgramItemEntity {
+        return ProgramItemEntity(
+            dto.startTime,
+            mapRecentAirTimeDtoToRecentAirTimeEntity(dto.recentAirTime),
+            dto.length,
+            dto.shortName,
+            dto.name
+        )
+    }
+
+    private fun mapRecentAirTimeDtoToRecentAirTimeEntity(dto: RecentAirTimeDto): RecentAirTimeEntity {
+        return RecentAirTimeEntity(dto.id, dto.channelID)
     }
 
 }
