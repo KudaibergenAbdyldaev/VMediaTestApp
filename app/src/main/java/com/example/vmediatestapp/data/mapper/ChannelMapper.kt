@@ -29,6 +29,17 @@ class ChannelMapper @Inject constructor(){
         return Channel(entity.orderNum, entity.accessNum, entity.callSign, entity.id)
     }
 
+    //Domain model to Entity
+    fun mapChannelListToChannelEntityList(channel: List<Channel>): List<ChannelEntity> {
+        val list = mutableListOf<ChannelEntity>()
+        channel.forEach { list.add(mapChannelToChannelEntity(it)) }
+        return list
+    }
+
+    private fun mapChannelToChannelEntity(channel: Channel): ChannelEntity {
+        return ChannelEntity(channel.orderNum, channel.accessNum, channel.callSign, channel.id)
+    }
+
     //Dto to Entity
     fun mapChannelDtoListToChannelEntityList(entity: List<ChannelDto>): List<ChannelEntity> {
         val list = mutableListOf<ChannelEntity>()

@@ -1,7 +1,6 @@
 package com.example.vmediatestapp.data.repository
 
 import com.example.vmediatestapp.data.local_db.dao.ChannelDao
-import com.example.vmediatestapp.data.local_db.model.ChannelEntity
 import com.example.vmediatestapp.data.mapper.ChannelMapper
 import com.example.vmediatestapp.data.network.ApiInterface
 import com.example.vmediatestapp.domain.channel.ChannelRepository
@@ -22,8 +21,8 @@ class ChannelRepositoryImpl @Inject constructor(
         return mapper.mapChannelEntityListToChannelList(channelDao.getChannels())
     }
 
-    override suspend fun insertChannels(channel: List<ChannelEntity>) {
-        return channelDao.insertChannels(channel)
+    override suspend fun insertChannels(channel: List<Channel>) {
+        return channelDao.insertChannels(mapper.mapChannelListToChannelEntityList(channel))
     }
 
 }
