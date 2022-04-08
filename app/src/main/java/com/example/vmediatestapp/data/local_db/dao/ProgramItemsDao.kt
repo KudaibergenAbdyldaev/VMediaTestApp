@@ -14,5 +14,5 @@ interface ProgramItemsDao {
     suspend fun insertProgramItems(programItems: List<ProgramItemEntity>)
 
     @Query("SELECT * FROM program")
-    fun getProgramItems(): List<ProgramItemEntity>
+    suspend fun getProgramItems(): List<ProgramItemEntity>
 }
