@@ -9,7 +9,7 @@ interface ApiInterface {
     @GET("/json/Channels")
     suspend fun getChannels():List<ChannelDto>
 
-    @GET("/json/Channels")
+    @GET("/json/ProgramItems")
     suspend fun getProgramItems():List<ProgramItemDto>
 
 }
