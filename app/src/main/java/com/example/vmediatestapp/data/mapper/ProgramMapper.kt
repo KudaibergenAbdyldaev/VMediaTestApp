@@ -22,7 +22,6 @@ class ProgramMapper @Inject constructor(){
             dto.startTime,
             mapRecentAirTimeDtoToRecentAirTime(dto.recentAirTime),
             dto.length,
-            dto.shortName,
             dto.name
         )
     }
@@ -43,7 +42,6 @@ class ProgramMapper @Inject constructor(){
             entity.startTime,
             mapRecentAirTimeEntityToRecentAirTime(entity.recentAirTime),
             entity.length,
-            entity.shortName,
             entity.name
         )
     }
@@ -64,7 +62,6 @@ class ProgramMapper @Inject constructor(){
             entity.startTime,
             mapRecentAirTimeToRecentAirTimeEntity(entity.recentAirTime),
             entity.length,
-            entity.shortName,
             entity.name
         )
     }
@@ -85,7 +82,7 @@ class ProgramMapper @Inject constructor(){
             dto.startTime,
             mapRecentAirTimeDtoToRecentAirTimeEntity(dto.recentAirTime),
             dto.length,
-            dto.shortName,
+
             dto.name
         )
     }
