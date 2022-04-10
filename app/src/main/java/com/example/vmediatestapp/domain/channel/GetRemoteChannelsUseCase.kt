@@ -7,7 +7,5 @@ class GetRemoteChannelsUseCase @Inject constructor(
 ) {
 
     suspend fun getRemoteChannels() = repository.getRemoteChannels()
-    suspend fun getLocalChannels() = repository.getLocalChannels()
-    suspend fun insertChannels(channel: List<Channel>) = repository.insertChannels(channel)
 
 }
