@@ -1,4 +1,4 @@
-package com.example.vmediatestapp.domain.programm
+package com.example.vmediatestapp.domain.model
 
 data class RecentAirTime(
     val id: Int,

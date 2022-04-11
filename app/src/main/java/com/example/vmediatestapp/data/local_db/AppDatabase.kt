@@ -4,26 +4,23 @@ import android.app.Application
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.vmediatestapp.data.local_db.dao.ChannelDao
-import com.example.vmediatestapp.data.local_db.dao.ProgramItemsDao
-import com.example.vmediatestapp.data.local_db.model.ChannelEntity
-import com.example.vmediatestapp.data.local_db.model.ProgramItemEntity
+import com.example.vmediatestapp.data.local_db.dao.Dao
+import com.example.vmediatestapp.data.local_db.model.ChannelAndProgramEntity
 
 
 @Database(
-    entities = [ChannelEntity::class, ProgramItemEntity::class],
-    version = 2,
+    entities = [ChannelAndProgramEntity::class],
+    version = 1,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun channelsDao(): ChannelDao
-    abstract fun programsDao(): ProgramItemsDao
+    abstract fun dao(): Dao
 
     companion object {
         private var INSTANCE: AppDatabase? = null
         private val LOCK = Any()
-        private const val DB_NAME = "popular_movie.db"
+        private const val DB_NAME = "channel_and_program.db"
 
         fun getInstance(application: Application): AppDatabase {
             INSTANCE?.let {

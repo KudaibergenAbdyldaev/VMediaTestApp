@@ -1,9 +1,8 @@
-package com.example.vmediatestapp.domain.programm
+package com.example.vmediatestapp.domain.model
 
 data class ProgramItem(
     val startTime: String,
     val recentAirTime: RecentAirTime,
     val length: String,
-    val shortName: String,
     val name: String,
 )
