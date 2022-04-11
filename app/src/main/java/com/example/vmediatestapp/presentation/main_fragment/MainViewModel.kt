@@ -1,17 +1,19 @@
 package com.example.vmediatestapp.presentation.main_fragment
 
 import androidx.lifecycle.*
-import com.example.vmediatestapp.data.mapper.MapChannelAndProgramItem
-import com.example.vmediatestapp.domain.ChannelAndProgram
-import com.example.vmediatestapp.domain.channel.GetRemoteChannelsUseCase
-import com.example.vmediatestapp.domain.programm.GetRemoteProgramItemsUseCase
+import com.example.vmediatestapp.domain.model.ChannelAndProgram
+import com.example.vmediatestapp.domain.use_case.GetLocalUseCase
+import com.example.vmediatestapp.domain.use_case.GetRemoteChannelsUseCase
+import com.example.vmediatestapp.domain.use_case.GetRemoteProgramItemsUseCase
+import com.example.vmediatestapp.domain.use_case.InsertToLocalUseCase
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
     private val getRemoteChannelsUseCase: GetRemoteChannelsUseCase,
     private val getRemoteProgramItemsUseCase: GetRemoteProgramItemsUseCase,
-    private val mapper: MapChannelAndProgramItem
+    private val localUseCase: GetLocalUseCase,
+    private val insertToLocalUseCase: InsertToLocalUseCase,
 ) : ViewModel() {
 
     private val _channel = MutableLiveData<List<ChannelAndProgram>>()
@@ -20,11 +22,11 @@ class MainViewModel @Inject constructor(
     init {
         viewModelScope.launch {
 
-            val list = mapper.mapToChannelAndProgramItems(
+            insertToLocalUseCase.insert(
                 getRemoteChannelsUseCase.getRemoteChannels(),
                 getRemoteProgramItemsUseCase.getRemoteProgramItems()
             )
-            _channel.value = list
+            _channel.value = localUseCase.getLocal()
         }
     }
 

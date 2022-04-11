@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vmediatestapp.R
 import com.example.vmediatestapp.databinding.ProgramItemBinding
-import com.example.vmediatestapp.domain.programm.ProgramItem
+import com.example.vmediatestapp.domain.model.ProgramItem
 
 class ProgramAdapter :
     ListAdapter<ProgramItem, ProgramAdapter.ProgramViewHolder>(DiffUtilCallBack) {

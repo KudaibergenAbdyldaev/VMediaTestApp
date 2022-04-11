@@ -2,16 +2,17 @@ package com.example.vmediatestapp.di
 
 import android.app.Application
 import com.example.vmediatestapp.data.local_db.AppDatabase
-import com.example.vmediatestapp.data.local_db.dao.ChannelDao
-import com.example.vmediatestapp.data.local_db.dao.ProgramItemsDao
+import com.example.vmediatestapp.data.local_db.dao.Dao
 import com.example.vmediatestapp.data.mapper.ChannelMapper
 import com.example.vmediatestapp.data.mapper.ProgramMapper
 import com.example.vmediatestapp.data.network.ApiFactory
 import com.example.vmediatestapp.data.network.ApiInterface
 import com.example.vmediatestapp.data.repository.ChannelRepositoryImpl
+import com.example.vmediatestapp.data.repository.LocalRepositoryImpl
 import com.example.vmediatestapp.data.repository.ProgramRepositoryImpl
-import com.example.vmediatestapp.domain.channel.ChannelRepository
-import com.example.vmediatestapp.domain.programm.ProgramRepository
+import com.example.vmediatestapp.domain.repository.ChannelRepository
+import com.example.vmediatestapp.domain.repository.LocalRepository
+import com.example.vmediatestapp.domain.repository.ProgramRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -26,6 +27,10 @@ interface DataModule {
     @Binds
     @AppScope
     fun bindProgramRepository(impl: ProgramRepositoryImpl): ProgramRepository
+
+    @Binds
+    @AppScope
+    fun bindLocalRepository(impl: LocalRepositoryImpl): LocalRepository
 
     companion object{
 
@@ -57,18 +62,10 @@ interface DataModule {
 
         @Provides
         @AppScope
-        fun provideChannelDao(
+        fun provideDao(
             application: Application
-        ): ChannelDao {
-            return AppDatabase.getInstance(application).channelsDao()
-        }
-
-        @Provides
-        @AppScope
-        fun provideProgramDao(
-            application: Application
-        ): ProgramItemsDao {
-            return AppDatabase.getInstance(application).programsDao()
+        ): Dao {
+            return AppDatabase.getInstance(application).dao()
         }
 
     }

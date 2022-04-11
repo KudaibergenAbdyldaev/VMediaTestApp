@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vmediatestapp.R
 import com.example.vmediatestapp.databinding.ChannelItemBinding
-import com.example.vmediatestapp.domain.ChannelAndProgram
+import com.example.vmediatestapp.domain.model.ChannelAndProgram
 
 class MainAdapter :
     ListAdapter<ChannelAndProgram, MainAdapter.ChannelViewHolder>(DiffUtilCallBack) {

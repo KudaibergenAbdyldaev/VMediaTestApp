@@ -1,5 +1,6 @@
-package com.example.vmediatestapp.domain.programm
+package com.example.vmediatestapp.domain.use_case
 
+import com.example.vmediatestapp.domain.repository.ProgramRepository
 import javax.inject.Inject
 
 class GetRemoteProgramItemsUseCase @Inject constructor(

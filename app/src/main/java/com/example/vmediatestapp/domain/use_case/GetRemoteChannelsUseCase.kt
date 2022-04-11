@@ -1,5 +1,6 @@
-package com.example.vmediatestapp.domain.channel
+package com.example.vmediatestapp.domain.use_case
 
+import com.example.vmediatestapp.domain.repository.ChannelRepository
 import javax.inject.Inject
 
 class GetRemoteChannelsUseCase @Inject constructor(

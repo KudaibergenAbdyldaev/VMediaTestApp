@@ -1,4 +1,4 @@
-package com.example.vmediatestapp.domain.channel
+package com.example.vmediatestapp.domain.model
 
 data class Channel(
     val orderNum: Int,
