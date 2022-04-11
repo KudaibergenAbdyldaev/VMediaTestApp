@@ -9,4 +9,5 @@ interface LocalRepository {
     suspend fun insert(channels: List<Channel>,
                        programItems: List<ProgramItem>)
     suspend fun getLocal(): List<ChannelAndProgram>
+    suspend fun delete()
 }

@@ -20,4 +20,8 @@ class LocalRepositoryImpl @Inject constructor(
     override suspend fun getLocal(): List<ChannelAndProgram> {
         return mapper.mapListChannelAndProgramEntityToModelList(dao.getProgramItems())
     }
+
+    override suspend fun delete() {
+        dao.deleteAll()
+    }
 }

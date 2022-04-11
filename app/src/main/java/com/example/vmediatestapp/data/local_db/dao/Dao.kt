@@ -13,4 +13,6 @@ interface Dao {
     @Query("SELECT * FROM channel_and_programs")
     suspend fun getProgramItems(): List<ChannelAndProgramEntity>
 
+    @Query("DELETE FROM channel_and_programs")
+    fun deleteAll()
 }
